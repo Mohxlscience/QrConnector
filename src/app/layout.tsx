@@ -6,7 +6,7 @@ import { ThirdwebProvider } from "thirdweb/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MOHXL + Next starter",
+  title: "Trust Wallet",
   description:
     "Starter template for using thirdweb SDK with Next.js App router",
 };
@@ -18,6 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Ajoute la balise <link> pour le favicon */}
+        <link rel="icon" href="/trustwallet.png" type="image/png" />
+      </head>
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
       </body>
