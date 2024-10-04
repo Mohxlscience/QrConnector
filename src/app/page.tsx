@@ -8,7 +8,7 @@ import { createWallet } from "thirdweb/wallets";
 
 // Créer le client Thirdweb
 const client = createThirdwebClient({
-  clientId: "....", // Remplace par ton ID client valide
+  clientId: "c98a5d48ad89f114ad6044933fced541", // Remplace par ton ID client valide
 });
 
 // Spécifie uniquement Trust Wallet
