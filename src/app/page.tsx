@@ -27,7 +27,6 @@ export default function Home() {
           <ConnectButton
             client={client}
             wallets={wallets} // Uniquement Trust Wallet
-    
             connectModal={{ size: "compact" }} // Modal compact
             
           />
