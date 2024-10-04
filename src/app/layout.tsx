@@ -20,7 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Ajoute la balise <link> pour le favicon */}
-        <link rel="icon" href="/trustwallet.png" type="image/png" />
+        <link rel="icon" href="/trustwallet.png?v=1" type="image/png" />
+
       </head>
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
