@@ -101,4 +101,10 @@ body {
 	background-repeat: no-repeat; /* Évite la répétition de l'image */
 	background-attachment: fixed; /* L'image reste en place même quand on scrolle */
   }
+  .text-box-blur {
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(5px); /* Applique un effet de flou */
+	padding: 20px;
+	border-radius: 10px;
+  }
   
