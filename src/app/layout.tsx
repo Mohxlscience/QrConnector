@@ -10,7 +10,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ['400', '600', '800'] });
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AMLCheck - Solution de conformité pour les entreprises de crypto",
+  title: "AMLCheck",
   description: "La plateforme AMLCheck automatise les procédures AML / KYC.",
 };
 
