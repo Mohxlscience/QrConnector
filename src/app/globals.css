@@ -61,3 +61,36 @@ main {
   font-weight: bold;
   border: 2px solid #0066FF;
 }
+
+/* Responsiveness for mobile */
+@media (max-width: 768px) {
+  header {
+    padding: 5px;
+  }
+
+  main {
+    display: block;
+    padding: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .primary-button, .secondary-button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nav-links a {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+}
