@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Trust Wallet",
-  description: "La plateforme AMLCheck automatise les procédures AML / KYC.",
+  description: "The AML Check platform automates AML/KYC procedures.",
 };
 
 export default function RootLayout({
@@ -38,19 +38,21 @@ export default function RootLayout({
                 height={40}
               />
               <div className="logo text-xl sm:text-2xl font-bold text-blue-600">
-                AMLCheck
-              </div>
+  AML Check
+  <span className="block text-sm font-normal text-gray-600">By Trust Wallet</span>
+</div>
             </div>
 
             <div className="nav-links flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <a href="#" className="text-gray-700">Produits</a>
-              <a href="#" className="text-gray-700">Tarifs</a>
-              <a href="#" className="text-gray-700">Analyses</a>
+              <a href="#" className="text-gray-700">Products</a>
+              <a href="#" className="text-gray-700">Rates</a>
+              <a href="#" className="text-gray-700">Analysis</a>
               <a href="#" className="text-gray-700">FAQ</a>
               <a href="#" className="text-gray-700">Blog</a>
-              <a href="#" className="text-gray-700">À propos de nous</a>
+              <a href="#" className="text-gray-700">About Us</a>
             </div>
-            <a href="#" className="cta-button bg-gray-800 text-white px-4 py-2 rounded-lg">Créer un compte</a>
+            <a href="#" className="cta-button bg-blue-500 text-white px-4 py-2 rounded-lg">Créer un compte</a>
+
           </nav>
         </header>
         <ThirdwebProvider>{children}</ThirdwebProvider>
