@@ -23,7 +23,7 @@ export default function Home() {
           Solution de conformité tout-en-un pour les entreprises de crypto
         </h1>
         <p className="text-base sm:text-lg text-gray-600 mb-8">
-          La plateforme AMLBot automatise les procédures AML / KYC et réduit les dépenses liées à la conformité.
+          La plateforme AMLCheck automatise les procédures AML / KYC et réduit les dépenses liées à la conformité.
         </p>
         <div className="buttons flex flex-col sm:flex-row gap-4 sm:gap-20">
           <ConnectButton client={client} wallets={wallets} connectModal={{ size: "compact" }} />
