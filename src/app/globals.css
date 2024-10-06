@@ -94,3 +94,11 @@ main {
     padding: 10px;
   }
 }
+body {
+	background-image: url('AdobeStock_179291869.jpeg.jpg');
+	background-size: cover; /* Adapte l'image à la taille de l'écran */
+	background-position: center; /* Centre l'image */
+	background-repeat: no-repeat; /* Évite la répétition de l'image */
+	background-attachment: fixed; /* L'image reste en place même quand on scrolle */
+  }
+  

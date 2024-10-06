@@ -51,7 +51,7 @@ export default function RootLayout({
               <a href="#" className="text-gray-700">Blog</a>
               <a href="#" className="text-gray-700">About Us</a>
             </div>
-            <a href="#" className="cta-button bg-blue-500 text-white px-4 py-2 rounded-lg">Créer un compte</a>
+            <a href="#" className="cta-button bg-blue-600 text-white px-4 py-2 rounded-lg">Créer un compte</a>
 
           </nav>
         </header>
