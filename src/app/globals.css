@@ -3,20 +3,61 @@
 @tailwind utilities;
 
 :root {
-	line-height: 1.5;
-	font-weight: 400;
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-family: 'Inter', sans-serif;
-	font-optical-sizing: auto;
-	font-style: normal;
-	font-variation-settings: 'slnt' 0;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
 }
 
-@layer base {
-	body {
-		@apply bg-zinc-950 text-neutral-200;
-	}
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.cta-button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  padding: 50px;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.primary-button {
+  background-color: #0066FF;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.secondary-button {
+  background-color: white;
+  color: #0066FF;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #0066FF;
 }

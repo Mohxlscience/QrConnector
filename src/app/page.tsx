@@ -1,8 +1,7 @@
 "use client";
-import { ethereum, polygon } from "thirdweb/chains";
 import Image from "next/image";
 import { ConnectButton } from "thirdweb/react";
-import trustwallet from "@public/trustwallet.png"; // Nouvelle image
+import trustwallet from "@public/trustwallet.png"; // Utilise l'image Trust Wallet
 import { createThirdwebClient } from "thirdweb";
 import { createWallet } from "thirdweb/wallets";
 
@@ -18,41 +17,34 @@ const wallets = [
 
 export default function Home() {
   return (
-    <div className="bg-white min-h-screen"> {/* Ajoute un wrapper pour tout */}
-      <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
-        <div className="py-20">
-          <Header />
-
-          {/* Nouveau ConnectButton avec Trust Wallet uniquement */}
-          <div className="flex justify-center mb-20">
-            <ConnectButton
-              client={client}
-              wallets={wallets} // Uniquement Trust Wallet
-              connectModal={{ size: "compact" }} // Modal compact
-            />
-          </div>
+    <main className="flex justify-between items-center p-20">
+      <div className="content max-w-lg">
+         <h1 className="text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
+          Solution de conformité tout-en-un pour les entreprises de crypto
+        </h1>
+        <p className="text-lg text-gray-600 mb-8">
+          La plateforme AMLBot automatise les procédures AML / KYC et réduit les dépenses liées à la conformité.
+        </p>
+        <div className="buttons">
+          {/* Remplace le lien par le bouton ConnectButton */}
+          <ConnectButton
+            
+            client={client}
+            wallets={wallets} // Uniquement Trust Wallet
+            connectModal={{ size: "compact" }} // Modal compact
+          />
+          <a href="/chat" className="secondary-button">Bot de chat →</a>
         </div>
-      </main>
-    </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="flex flex-col items-center mb-20 md:mb-20">
-      <Image
-        src={trustwallet} // Utilise l'image correcte ici
-        alt="Trust Wallet Icon"
-        className="size-[150px] md:size-[150px]"
-        style={{
-          filter: "drop-shadow(0px 0px 10px #0000ff)", // Aura bleue discrète
-        }}
-      />
-      <h1 className="text-2xl md:text-6xl font-semibold md:font-bold tracking-tighter mb-6 text-blue-500">
-        Trust 
-        <span className="text-zinc-300 inline-block mx-1"> </span>
-        <span className="inline-block -skew-x-6 text-blue-500"> Wallet </span>
-      </h1>
-    </header>
+      </div>
+      <div className="image">
+        <Image
+          src={trustwallet}
+          alt="Trust Wallet Icon"
+          width={500}
+          height={300}
+          className="rounded-lg"
+        />
+      </div>
+    </main>
   );
 }
