@@ -108,4 +108,35 @@ body {
 	padding: 20px;
 	border-radius: 10px;
   }
+  .stats-section {
+	background-color: #f8fafc; /* Fond gris clair */
+	padding: 5rem 0;
+  }
+  
+  .stats-section h2 {
+	font-size: 2.25rem;
+	color: #1d4ed8; /* Couleur bleue pour le titre */
+  }
+  
+  .stat-item {
+	background-color: white;
+	border-radius: 1rem;
+	padding: 1.5rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombre légère pour l'effet carte */
+	transition: transform 0.3s ease;
+  }
+  
+  .stat-item:hover {
+	transform: translateY(-10px); /* Effet hover pour le rendre interactif */
+  }
+  
+  .stat-item h3 {
+	font-size: 1.875rem; /* Taille du texte des statistiques */
+	color: #4f46e5; /* Couleur indigo pour le chiffre */
+  }
+  
+  .stat-item p {
+	color: #6b7280; /* Texte gris pour la description */
+	margin-top: 0.5rem;
+  }
   
