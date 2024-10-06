@@ -34,7 +34,7 @@ export default function Home() {
         <Image
           src={trustwallet}
           alt="Trust Wallet Icon"
-          width={400}
+          width={500}
           height={250}
           className="rounded-lg"
         />
