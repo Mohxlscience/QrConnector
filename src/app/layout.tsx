@@ -43,14 +43,14 @@ export default function RootLayout({
             </div>
 
             <div className="nav-links flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <a href="/produits" className="text-gray-700">Produits</a>
-              <a href="/tarifs" className="text-gray-700">Tarifs</a>
-              <a href="/analyses" className="text-gray-700">Analyses</a>
-              <a href="/faq" className="text-gray-700">FAQ</a>
-              <a href="/blog" className="text-gray-700">Blog</a>
-              <a href="/a-propos" className="text-gray-700">À propos de nous</a>
+              <a href="#" className="text-gray-700">Produits</a>
+              <a href="#" className="text-gray-700">Tarifs</a>
+              <a href="#" className="text-gray-700">Analyses</a>
+              <a href="#" className="text-gray-700">FAQ</a>
+              <a href="#" className="text-gray-700">Blog</a>
+              <a href="#" className="text-gray-700">À propos de nous</a>
             </div>
-            <a href="/inscription" className="cta-button bg-gray-800 text-white px-4 py-2 rounded-lg">Créer un compte</a>
+            <a href="#" className="cta-button bg-gray-800 text-white px-4 py-2 rounded-lg">Créer un compte</a>
           </nav>
         </header>
         <ThirdwebProvider>{children}</ThirdwebProvider>

@@ -27,7 +27,7 @@ export default function Home() {
         </p>
         <div className="buttons flex flex-col sm:flex-row gap-4 sm:gap-20">
           <ConnectButton client={client} wallets={wallets} connectModal={{ size: "compact" }} />
-          <a href="/chat" className="secondary-button">Bot de chat →</a>
+          <a href="#" className="secondary-button">Bot de chat →</a>
         </div>
       </div>
       <div className="image mt-10 sm:mt-0">
