@@ -50,7 +50,7 @@ export default function RootLayout({
               <a href="/blog" className="text-gray-700">Blog</a>
               <a href="/a-propos" className="text-gray-700">À propos de nous</a>
             </div>
-            <a href="/inscription" className="cta-button bg-gray-800 text-white px-4 py-2 rounded-lg sm:w-auto w-full">Créer un compte</a>
+            <a href="/inscription" className="cta-button bg-gray-800 text-white px-4 py-2 rounded-lg">Créer un compte</a>
           </nav>
         </header>
         <ThirdwebProvider>{children}</ThirdwebProvider>
