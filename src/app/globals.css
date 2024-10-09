@@ -12,10 +12,25 @@ body, html {
   padding: 0;
 }
 
+body {
+  background-image: url('AdobeStock_179291869.jpeg.jpg');
+  background-size: cover; /* Adapte l'image à la taille de l'écran */
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Évite la répétition de l'image */
+  background-attachment: fixed; /* L'image reste en place même quand on scrolle */
+}
+
+/* Header styling */
 header {
   background-color: #ffffff;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 50; /* S'assurer que le header est au-dessus des autres éléments */
+}
+
+.nav-links {
+  display: none; /* Cacher par défaut */
 }
 
 .nav-links a {
@@ -24,23 +39,31 @@ header {
   color: #333;
 }
 
+/* Bouton d'appel à l'action (CTA) */
 .cta-button {
-  /* background-color: #333; */
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
 }
 
+/* Main section */
 main {
   display: flex;
   padding: 50px;
   align-items: center;
 }
 
+/* Boutons */
 .buttons {
   display: flex;
-  gap: 20px;
+  flex-direction: column; /* Alignement vertical par défaut sur mobile */
+  gap: 10px;
+}
+
+.primary-button, .secondary-button {
+  width: 100%; /* Pleine largeur sur mobile */
+  padding: 10px;
 }
 
 .primary-button {
@@ -60,10 +83,19 @@ main {
   text-decoration: none;
   font-weight: bold;
   border: 2px solid #0066FF;
- 
 }
+
 /* Appliquer margin-left uniquement sur les écrans plus larges que 768px */
 @media (min-width: 769px) {
+  .buttons {
+    flex-direction: row; /* Alignement horizontal sur les grands écrans */
+    gap: 20px;
+  }
+
+  .primary-button, .secondary-button {
+    width: auto; /* Taille ajustée sur grand écran */
+  }
+
   .secondary-button {
     margin-left: 117px;
   }
@@ -80,19 +112,32 @@ main {
     padding: 20px;
   }
 
+  .nav-links {
+    display: block;
+    position: absolute;
+    top: 100%; /* Placer en dessous du header */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre pour un effet élégant */
+    flex-direction: column; /* S'assurer que les éléments sont en colonne */
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0; /* Séparation entre les éléments */
+  }
+
   .buttons {
     flex-direction: column;
     gap: 10px;
   }
 
   .primary-button, .secondary-button {
-    width: 100%;
+    width: 100%; /* Pleine largeur sur mobile */
     padding: 10px;
-  }
-
-  .nav-links a {
-    margin-left: 10px;
-    font-size: 14px;
   }
 
   .cta-button {
@@ -100,49 +145,50 @@ main {
     text-align: center;
     padding: 10px;
   }
+
+  .nav-links a {
+    margin-left: 10px;
+    font-size: 14px;
+  }
 }
-body {
-	background-image: url('AdobeStock_179291869.jpeg.jpg');
-	background-size: cover; /* Adapte l'image à la taille de l'écran */
-	background-position: center; /* Centre l'image */
-	background-repeat: no-repeat; /* Évite la répétition de l'image */
-	background-attachment: fixed; /* L'image reste en place même quand on scrolle */
-  }
-  .text-box-blur {
-	background: rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(5px); /* Applique un effet de flou */
-	padding: 20px;
-	border-radius: 10px;
-  }
-  .stats-section {
-	background-color: #f8fafc; /* Fond gris clair */
-	padding: 5rem 0;
-  }
-  
-  .stats-section h2 {
-	font-size: 2.25rem;
-	color: #1d4ed8; /* Couleur bleue pour le titre */
-  }
-  
-  .stat-item {
-	background-color: white;
-	border-radius: 1rem;
-	padding: 1.5rem;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombre légère pour l'effet carte */
-	transition: transform 0.3s ease;
-  }
-  
-  .stat-item:hover {
-	transform: translateY(-10px); /* Effet hover pour le rendre interactif */
-  }
-  
-  .stat-item h3 {
-	font-size: 1.875rem; /* Taille du texte des statistiques */
-	color: #4f46e5; /* Couleur indigo pour le chiffre */
-  }
-  
-  .stat-item p {
-	color: #6b7280; /* Texte gris pour la description */
-	margin-top: 0.5rem;
-  }
-  
+
+/* Section floutée */
+.text-box-blur {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px); /* Applique un effet de flou */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Section des statistiques */
+.stats-section {
+  background-color: #f8fafc; /* Fond gris clair */
+  padding: 5rem 0;
+}
+
+.stats-section h2 {
+  font-size: 2.25rem;
+  color: #1d4ed8; /* Couleur bleue pour le titre */
+}
+
+.stat-item {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombre légère pour l'effet carte */
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-10px); /* Effet hover pour le rendre interactif */
+}
+
+.stat-item h3 {
+  font-size: 1.875rem; /* Taille du texte des statistiques */
+  color: #4f46e5; /* Couleur indigo pour le chiffre */
+}
+
+.stat-item p {
+  color: #6b7280; /* Texte gris pour la description */
+  margin-top: 0.5rem;
+}
