@@ -60,7 +60,13 @@ main {
   text-decoration: none;
   font-weight: bold;
   border: 2px solid #0066FF;
-  margin-left: 117px;
+ 
+}
+/* Appliquer margin-left uniquement sur les écrans plus larges que 768px */
+@media (min-width: 769px) {
+  .secondary-button {
+    margin-left: 117px;
+  }
 }
 
 /* Responsiveness for mobile */
