@@ -20,6 +20,7 @@ export default function Header() {
           />
           <div className="logo text-xl sm:text-2xl font-bold text-blue-600">
             AMLCheck
+            <span className="block text-sm font-normal text-gray-600">By Trust Wallet</span>
           </div>
         </div>
 
