@@ -30,7 +30,7 @@ export default function Home() {
       setIsLoggedIn(true); // Connecter l'utilisateur
       router.push("/"); // Rediriger vers la page principale
     } else {
-      alert("Nom d'utilisateur ou mot de passe incorrect");
+      alert("Incorrect username or password");
     }
   };
   
