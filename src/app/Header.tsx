@@ -57,7 +57,7 @@ export default function Header() {
   <a href="/faq" className="text-gray-700 px-4 py-2 block">FAQ</a>
   <a href="/blog" className="text-gray-700 px-4 py-2 block">Blog</a>
   <a href="/about-us" className="text-gray-700 px-4 py-2 block">About Us</a>
-  <a href="/sign-up" className="cta-button bg-blue-600 text-white px-4 py-2 rounded-lg block text-center">Sign Up</a>
+  <a href="/login" className="cta-button bg-blue-600 text-white px-4 py-2 rounded-lg block text-center">Sign Up</a>
 </div>
 
       </nav>
