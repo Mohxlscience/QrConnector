@@ -129,12 +129,12 @@ export default function Home() {
             marginBottom: '10px',
             fontWeight: 'bold',
             color: '#555'
-          }}>Nom d'utilisateur :</label>
+          }}>Username:</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Entrez votre nom d'utilisateur"
+            placeholder="Enter your username"
             style={{
               width: '100%',
               padding: '12px',
@@ -156,7 +156,7 @@ export default function Home() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Entrez votre mot de passe"
+            placeholder="Enter your password"
             style={{
               width: '100%',
               padding: '12px',
