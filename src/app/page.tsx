@@ -152,7 +152,7 @@ export default function Home() {
             marginBottom: '10px',
             fontWeight: 'bold',
             color: '#555'
-          }}>Mot de passe :</label>
+          }}>Password :</label>
           <input
             type="password"
             value={password}
