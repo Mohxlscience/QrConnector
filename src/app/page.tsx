@@ -99,7 +99,7 @@ export default function Home() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      // justifyContent: 'center',
       height: '100vh',
       backgroundColor: '#f0f4f8',
       fontFamily: 'Arial, sans-serif'
