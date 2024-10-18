@@ -24,15 +24,16 @@ export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (username === 'aml' && password === 'test') {
+    if (username === "aml" && password === "test") {
       setIsLoggedIn(true); // Connecter l'utilisateur
-      router.push('/'); // Rediriger vers la page principale si nécessaire
+      router.push("/"); // Rediriger vers la page principale
     } else {
       alert("Nom d'utilisateur ou mot de passe incorrect");
     }
   };
+  
 
   if (isLoggedIn) {
     return (
