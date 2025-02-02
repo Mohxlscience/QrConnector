@@ -1,21 +1,145 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ConnectButton } from "thirdweb/react";
-import trustwallet from "@public/trustwallet.png"; // Utilise l'image Trust Wallet
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
+import trustwallet from "@public/trustwallet.png";
 import { createThirdwebClient } from "thirdweb";
 import { createWallet } from "thirdweb/wallets";
+import { useConnection } from "@/context/ConnectionContext"; // Importer le contexte
 
-// Créer le client Thirdweb
 const client = createThirdwebClient({
-  clientId: "c98a5d48ad89f114ad6044933fced541", // Remplace par ton ID client valide
+  clientId: "c98a5d48ad89f114ad6044933fced541",
 });
 
-// Spécifie uniquement Trust Wallet
 const wallets = [
-  createWallet("com.trustwallet.app"), // Trust Wallet seulement
+  createWallet("com.trustwallet.app"),
 ];
 
 export default function Home() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+  const { addConnection } = useConnection(); // Utiliser le contexte
+  const account = useActiveAccount();
+  const lastAccountRef = useRef(account); // Référence pour suivre le dernier compte
+
+  useEffect(() => {
+    // Vérifier si le compte a changé
+    if (account && account !== lastAccountRef.current) {
+      // Ajouter une entrée à l'historique
+      addConnection({
+        timestamp: new Date().toLocaleString(),
+        status: "Connected",
+      });
+
+      // Mettre à jour la référence avec le nouveau compte
+      lastAccountRef.current = account;
+    }
+  }, [account, addConnection]);
+
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (username === "aml" && password === "test") {
+      setIsLoggedIn(true); // Connecter l'utilisateur
+      router.push("/"); // Rediriger vers la page principale
+    } else {
+      alert("Incorrect username or password");
+    }
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f0f4f8',
+        fontFamily: 'Arial, sans-serif'
+      }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginBottom: '40px'
+        }}>
+          <Image src={trustwallet} alt="Logo" width={100} height={100} />
+        </div>
+        
+        <h1 style={{ color: '#333', fontSize: '2rem', marginBottom: '30px' }}>Connexion</h1>
+        
+        <form onSubmit={handleLogin} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '300px',
+          backgroundColor: 'white',
+          padding: '20px',
+          borderRadius: '10px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+        }}>
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '10px',
+              fontWeight: 'bold',
+              color: '#555'
+            }}>Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '8px',
+                border: '1px solid #ddd',
+                fontSize: '16px',
+                backgroundColor: '#f9f9f9'
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '10px',
+              fontWeight: 'bold',
+              color: '#555'
+            }}>Password :</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '8px',
+                border: '1px solid #ddd',
+                fontSize: '16px',
+                backgroundColor: '#f9f9f9'
+              }}
+            />
+          </div>
+          <button type="submit" style={{
+            backgroundColor: '#007bff',
+            color: 'white',
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease'
+          }}>
+            Connexion
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <>
       <main className="flex flex-col sm:flex-row justify-between items-center p-5 sm:p-20">
@@ -30,7 +154,7 @@ export default function Home() {
           </div>
           <div className="buttons flex flex-col sm:flex-row gap-4 sm:gap-20">
             <ConnectButton client={client} wallets={wallets} connectModal={{ size: "compact" }} />
-            <a href="#" className="secondary-button">Bot de chat →</a>
+            <a href="/History" target="_blank" className="secondary-button">Historique →</a> {/* Lien vers la page d'historique */}
           </div>
         </div>
         <div className="image mt-10 sm:mt-0">
