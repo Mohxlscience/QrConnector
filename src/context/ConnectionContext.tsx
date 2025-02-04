@@ -1,49 +1,57 @@
 "use client";
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { db, collection, query, onSnapshot, addDoc, serverTimestamp } from "@/lib/firebase";
 
 type ConnectionEntry = {
   timestamp: string;
   status: string;
-  ethAddress?: string; // Ajouter l'adresse ETH
+  ethAddress?: string;
 };
 
 type ConnectionContextType = {
   connectionHistory: ConnectionEntry[];
-  addConnection: (entry: ConnectionEntry) => void;
+  addConnection: (entry: Omit<ConnectionEntry, "timestamp">) => Promise<void>;
+  loading: boolean;
 };
 
 const ConnectionContext = createContext<ConnectionContextType | undefined>(undefined);
 
 export const ConnectionProvider = ({ children }: { children: ReactNode }) => {
-  // Charger l'historique depuis localStorage lors de l'initialisation
-  const [connectionHistory, setConnectionHistory] = useState<ConnectionEntry[]>(() => {
-    if (typeof window !== "undefined") {
-      const savedHistory = localStorage.getItem("connectionHistory");
-      return savedHistory ? JSON.parse(savedHistory) : [];
-    }
-    return [];
-  });
+  const [connectionHistory, setConnectionHistory] = useState<ConnectionEntry[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Sauvegarder l'historique dans localStorage à chaque mise à jour
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("connectionHistory", JSON.stringify(connectionHistory));
-    }
-  }, [connectionHistory]);
-
-  const addConnection = (entry: ConnectionEntry) => {
-    setConnectionHistory((prevHistory) => {
-      const newHistory = [...prevHistory, entry];
-      if (typeof window !== "undefined") {
-        localStorage.setItem("connectionHistory", JSON.stringify(newHistory));
-      }
-      return newHistory;
+    const q = query(collection(db, "connections"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const entries: ConnectionEntry[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        entries.push({
+          timestamp: data.timestamp?.toDate().toLocaleString() || "",
+          status: data.status,
+          ethAddress: data.ethAddress
+        });
+      });
+      setConnectionHistory(entries);
+      setLoading(false);
     });
+
+    return () => unsubscribe();
+  }, []);
+
+  const addConnection = async (entry: Omit<ConnectionEntry, "timestamp">) => {
+    try {
+      await addDoc(collection(db, "connections"), {
+        ...entry,
+        timestamp: serverTimestamp()
+      });
+    } catch (error) {
+      console.error("Erreur d'ajout de connexion:", error);
+    }
   };
-  
 
   return (
-    <ConnectionContext.Provider value={{ connectionHistory, addConnection }}>
+    <ConnectionContext.Provider value={{ connectionHistory, addConnection, loading }}>
       {children}
     </ConnectionContext.Provider>
   );

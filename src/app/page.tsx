@@ -25,20 +25,16 @@ export default function Home() {
   const account = useActiveAccount();
   const lastAccountRef = useRef(account); // Référence pour suivre le dernier compte
 
-  useEffect(() => {
-    // Vérifier si le compte a changé
-    if (account && account !== lastAccountRef.current) {
-      // Ajouter une entrée à l'historique
-      addConnection({
-        timestamp: new Date().toLocaleString(),
-        status: "Connected",
-        ethAddress: account.address, // Inclure l'adresse ETH
-      });
-
-      // Mettre à jour la référence avec le nouveau compte
-      lastAccountRef.current = account;
-    }
-  }, [account, addConnection]);
+// Dans le useEffect qui gère la connexion
+useEffect(() => {
+  if (account && account !== lastAccountRef.current) {
+    addConnection({
+      status: "Connected",
+      ethAddress: account.address,
+    });
+    lastAccountRef.current = account;
+  }
+}, [account, addConnection]);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
