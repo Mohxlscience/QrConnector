@@ -12,7 +12,7 @@ export default function HistoryPage() {
     <div className="connection-history-section py-20 bg-white text-center">
       <div className="container mx-auto">
         <h2 className="text-4xl font-extrabold mb-8 text-blue-600">
-          Historiques Connexions
+          Historique des Connexions
         </h2>
         <div className="grid grid-cols-1 gap-4 max-w-2xl mx-auto">
           {connectionHistory.map((entry, index) => (
