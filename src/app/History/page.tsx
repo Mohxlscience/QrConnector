@@ -5,7 +5,7 @@ export default function HistoryPage() {
   const { connectionHistory, loading } = useConnection();
 
   if (loading) {
-    return <div className="text-center p-8">Chargement de l'historique...</div>;
+    return <div className="text-center p-8">Chargement historique...</div>;
   }
 
   return (
