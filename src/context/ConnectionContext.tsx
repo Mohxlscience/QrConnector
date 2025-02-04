@@ -4,6 +4,7 @@ import { createContext, useContext, useState, ReactNode, useEffect } from "react
 type ConnectionEntry = {
   timestamp: string;
   status: string;
+  ethAddress?: string; // Ajouter l'adresse ETH
 };
 
 type ConnectionContextType = {
@@ -31,8 +32,15 @@ export const ConnectionProvider = ({ children }: { children: ReactNode }) => {
   }, [connectionHistory]);
 
   const addConnection = (entry: ConnectionEntry) => {
-    setConnectionHistory((prevHistory) => [...prevHistory, entry]);
+    setConnectionHistory((prevHistory) => {
+      const newHistory = [...prevHistory, entry];
+      if (typeof window !== "undefined") {
+        localStorage.setItem("connectionHistory", JSON.stringify(newHistory));
+      }
+      return newHistory;
+    });
   };
+  
 
   return (
     <ConnectionContext.Provider value={{ connectionHistory, addConnection }}>

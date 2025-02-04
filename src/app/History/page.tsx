@@ -24,7 +24,9 @@ export default function HistoryPage() {
           <div className="history-list mt-8">
             {connectionHistory.map((entry, index) => (
               <div key={index} className="history-item p-4 bg-gray-100 rounded-lg mb-2">
-                <p className="text-gray-700">{entry.timestamp} - {entry.status}</p>
+                <p className="text-gray-700">
+                  {entry.timestamp} - {entry.status} {entry.ethAddress && `- ETH Address: ${entry.ethAddress}`}
+                </p>
               </div>
             ))}
           </div>

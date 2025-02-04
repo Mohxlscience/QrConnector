@@ -32,6 +32,7 @@ export default function Home() {
       addConnection({
         timestamp: new Date().toLocaleString(),
         status: "Connected",
+        ethAddress: account.address, // Inclure l'adresse ETH
       });
 
       // Mettre à jour la référence avec le nouveau compte
