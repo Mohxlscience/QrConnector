@@ -19,7 +19,6 @@ const ConnectionContext = createContext<ConnectionContextType | undefined>(undef
 export const ConnectionProvider = ({ children }: { children: ReactNode }) => {
   const [connectionHistory, setConnectionHistory] = useState<ConnectionEntry[]>([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const q = query(collection(db, "connections"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -32,10 +31,18 @@ export const ConnectionProvider = ({ children }: { children: ReactNode }) => {
           ethAddress: data.ethAddress
         });
       });
+  
+      // Trier les entrées par timestamp en ordre décroissant
+      entries.sort((a, b) => {
+        const dateA = new Date(a.timestamp).getTime();
+        const dateB = new Date(b.timestamp).getTime();
+        return dateB - dateA; // Ordre décroissant
+      });
+  
       setConnectionHistory(entries);
       setLoading(false);
     });
-
+  
     return () => unsubscribe();
   }, []);
 
